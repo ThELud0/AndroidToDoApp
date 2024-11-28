@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.ludo.todoapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.ludo.todoapp"
