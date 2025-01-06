@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.ludo.todoapp.R
 import com.ludo.todoapp.data.Api
@@ -101,7 +102,7 @@ class TaskListFragment : Fragment() {
         lifecycleScope.launch {
             val user = Api.userWebService.fetchUser().body()!!
             binding.userTextView.text = user.name
-
+            binding.userImageView.load("https://goo.gl/gEgYUd")
         }
 
     }
