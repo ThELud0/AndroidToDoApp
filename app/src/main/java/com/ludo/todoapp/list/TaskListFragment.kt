@@ -18,9 +18,16 @@ import com.ludo.todoapp.data.Api
 import com.ludo.todoapp.databinding.FragmentTaskListBinding
 
 import com.ludo.todoapp.detail.DetailActivity
+import com.ludo.todoapp.user.UserActivity
 import kotlinx.coroutines.launch
 
 import java.util.UUID
+
+import coil3.load
+import coil3.request.error
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 
 
 class TaskListFragment : Fragment() {
@@ -85,6 +92,11 @@ class TaskListFragment : Fragment() {
             createTask.launch(intent)
         }
 
+        binding.userImageView.setOnClickListener {
+            val intent = Intent(context, UserActivity::class.java)
+            startActivity(intent)
+        }
+
         lifecycleScope.launch { // on lance une coroutine car `collect` est `suspend`
             viewModel.tasksStateFlow.collect { newList ->
                 // cette lambda est exécutée à chaque fois que la liste est mise à jour dans le VM
@@ -102,7 +114,9 @@ class TaskListFragment : Fragment() {
         lifecycleScope.launch {
             val user = Api.userWebService.fetchUser().body()!!
             binding.userTextView.text = user.name
-            binding.userImageView.load("https://goo.gl/gEgYUd")
+            binding.userImageView.load(user.avatar) {
+                error(R.drawable.ic_launcher_background) // image par défaut en cas d'erreur
+            }
         }
 
     }

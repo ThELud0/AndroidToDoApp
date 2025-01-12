@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +19,10 @@
             android:exported="false"
             android:label="@string/title_activity_detail"
             android:theme="@style/Theme.TodoAppLudo" />
+        <activity
+            android:name=".user.UserActivity"
+            android:label="UserActivity"
+            android:theme="@style/Theme.TodoAppLudo"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
