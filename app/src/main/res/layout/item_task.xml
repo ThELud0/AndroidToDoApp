@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingBottom="10dp">
+    android:padding="5dp">
 
 
 
@@ -19,14 +19,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:background="@android:color/holo_blue_bright"/>
+                android:background="@android:color/holo_blue_bright"
+                android:padding="5dp"/>
 
         <!-- Task Description -->
             <TextView
                 android:id="@+id/task_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:padding="5dp"
                 android:background="@android:color/holo_green_light" />
 
         </LinearLayout>

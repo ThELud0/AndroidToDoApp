@@ -19,11 +19,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.TakePicturePreview
 import androidx.activity.result.launch
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -128,10 +132,12 @@ class UserActivity : ComponentActivity() {
                 }
 
 
-                Column {
+                Column( modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally) {
 
                     AsyncImage(
-                        modifier = Modifier.fillMaxHeight(.2f),
+                        modifier = Modifier.fillMaxHeight(.2f).align(Alignment.CenterHorizontally),
                         model = uri,
                         contentDescription = "Picked Image"
                     )
@@ -139,7 +145,8 @@ class UserActivity : ComponentActivity() {
                     // Bouton pour déclencher l'appareil photo
                     Button(
                         onClick = { captureUri?.let { takePicture.launch(it) } }, // Lancer la capture
-                        content = { Text("Take Picture") }
+                        content = { Text("Take Picture") },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
 
                     // Placeholder pour un autre bouton (ex. choisir une photo)
@@ -162,12 +169,14 @@ class UserActivity : ComponentActivity() {
                                 requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
                             }
                         },
-                        content = { Text("Pick Photo") }
+                        content = { Text("Pick Photo") },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
 
                     Button(
                         onClick = { finish() },
-                        content = { Text("Validate") }
+                        content = { Text("Validate") },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
 
                 }
